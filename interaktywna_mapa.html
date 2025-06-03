@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_85c72784b40dc418d77a24575ee1d56f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_85c72784b40dc418d77a24575ee1d56f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_85c72784b40dc418d77a24575ee1d56f = L.map(
+                "map_85c72784b40dc418d77a24575ee1d56f",
+                {
+                    center: [10.0, -30.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_27be14dda774bd67a809e09dda29d8c2 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_27be14dda774bd67a809e09dda29d8c2.addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+            var marker_5373c99f82e6708b1bb29855121c7e77 = L.marker(
+                [-34.6037, -58.3816],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_c4013ec7ed8906534116da1611323672 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_70e2cd9b8d11283d62b58666acb10f60 = $(`<div id="html_70e2cd9b8d11283d62b58666acb10f60" style="width: 100.0%; height: 100.0%;">Buenos Aires<br>Liczba lotów: 72539</div>`)[0];
+                popup_c4013ec7ed8906534116da1611323672.setContent(html_70e2cd9b8d11283d62b58666acb10f60);
+            
+        
+
+        marker_5373c99f82e6708b1bb29855121c7e77.bindPopup(popup_c4013ec7ed8906534116da1611323672)
+        ;
+
+        
+    
+    
+            marker_5373c99f82e6708b1bb29855121c7e77.bindTooltip(
+                `<div>
+                     Buenos Aires: 72539 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5beec80f7a41c5a730606bd69487a91a = L.marker(
+                [-33.4489, -70.6693],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_fb20a137b7145bdd40bea2d4da2a3112 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c7dc60d9c4117d22c7cfed7700a4f64a = $(`<div id="html_c7dc60d9c4117d22c7cfed7700a4f64a" style="width: 100.0%; height: 100.0%;">Santiago (Chile)<br>Liczba lotów: 52787</div>`)[0];
+                popup_fb20a137b7145bdd40bea2d4da2a3112.setContent(html_c7dc60d9c4117d22c7cfed7700a4f64a);
+            
+        
+
+        marker_5beec80f7a41c5a730606bd69487a91a.bindPopup(popup_fb20a137b7145bdd40bea2d4da2a3112)
+        ;
+
+        
+    
+    
+            marker_5beec80f7a41c5a730606bd69487a91a.bindTooltip(
+                `<div>
+                     Santiago (Chile): 52787 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8b339a904418848137cc9d7c5d0bc150 = L.marker(
+                [38.7169, -9.1399],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_a1dc81160c25d9442c1135ebc4e7cbeb = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_740688e01d3927ef724fcc0d2b73bea5 = $(`<div id="html_740688e01d3927ef724fcc0d2b73bea5" style="width: 100.0%; height: 100.0%;">Lizbona<br>Liczba lotów: 40243</div>`)[0];
+                popup_a1dc81160c25d9442c1135ebc4e7cbeb.setContent(html_740688e01d3927ef724fcc0d2b73bea5);
+            
+        
+
+        marker_8b339a904418848137cc9d7c5d0bc150.bindPopup(popup_a1dc81160c25d9442c1135ebc4e7cbeb)
+        ;
+
+        
+    
+    
+            marker_8b339a904418848137cc9d7c5d0bc150.bindTooltip(
+                `<div>
+                     Lizbona: 40243 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_590bccfeceaf5fd3dd8b3d8ece561343 = L.marker(
+                [25.7617, -80.1918],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_58be636938169d230d65590f943bb36e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_019bcdab841dcd22fef6f241bcea7556 = $(`<div id="html_019bcdab841dcd22fef6f241bcea7556" style="width: 100.0%; height: 100.0%;">Miami<br>Liczba lotów: 29849</div>`)[0];
+                popup_58be636938169d230d65590f943bb36e.setContent(html_019bcdab841dcd22fef6f241bcea7556);
+            
+        
+
+        marker_590bccfeceaf5fd3dd8b3d8ece561343.bindPopup(popup_58be636938169d230d65590f943bb36e)
+        ;
+
+        
+    
+    
+            marker_590bccfeceaf5fd3dd8b3d8ece561343.bindTooltip(
+                `<div>
+                     Miami: 29849 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_be70b31495e508b2d003f21ed8fb6c50 = L.marker(
+                [-34.9011, -56.1645],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_dc4b7b7c9b2bb32e92189f23c1fb1391 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_0bbd6bed15bfa894ba5aab109a67035e = $(`<div id="html_0bbd6bed15bfa894ba5aab109a67035e" style="width: 100.0%; height: 100.0%;">Montevideo<br>Liczba lotów: 21553</div>`)[0];
+                popup_dc4b7b7c9b2bb32e92189f23c1fb1391.setContent(html_0bbd6bed15bfa894ba5aab109a67035e);
+            
+        
+
+        marker_be70b31495e508b2d003f21ed8fb6c50.bindPopup(popup_dc4b7b7c9b2bb32e92189f23c1fb1391)
+        ;
+
+        
+    
+    
+            marker_be70b31495e508b2d003f21ed8fb6c50.bindTooltip(
+                `<div>
+                     Montevideo: 21553 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_168daac65a66a59be34b45e5e5e4a1a3 = L.marker(
+                [51.5074, -0.1278],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_25689c5c32659d77a8c76ea3272f46f5 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a7bcbe304205d7950177608f3271bab2 = $(`<div id="html_a7bcbe304205d7950177608f3271bab2" style="width: 100.0%; height: 100.0%;">Londyn<br>Liczba lotów: 21300</div>`)[0];
+                popup_25689c5c32659d77a8c76ea3272f46f5.setContent(html_a7bcbe304205d7950177608f3271bab2);
+            
+        
+
+        marker_168daac65a66a59be34b45e5e5e4a1a3.bindPopup(popup_25689c5c32659d77a8c76ea3272f46f5)
+        ;
+
+        
+    
+    
+            marker_168daac65a66a59be34b45e5e5e4a1a3.bindTooltip(
+                `<div>
+                     Londyn: 21300 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_917c1d593c4769a20c00aa96879840c8 = L.marker(
+                [28.5383, -81.3792],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_1e8260ab74a25e684a9995d33ea61c43 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b7f178deb252d1d8ba2b21dcd92a6882 = $(`<div id="html_b7f178deb252d1d8ba2b21dcd92a6882" style="width: 100.0%; height: 100.0%;">Orlando<br>Liczba lotów: 20097</div>`)[0];
+                popup_1e8260ab74a25e684a9995d33ea61c43.setContent(html_b7f178deb252d1d8ba2b21dcd92a6882);
+            
+        
+
+        marker_917c1d593c4769a20c00aa96879840c8.bindPopup(popup_1e8260ab74a25e684a9995d33ea61c43)
+        ;
+
+        
+    
+    
+            marker_917c1d593c4769a20c00aa96879840c8.bindTooltip(
+                `<div>
+                     Orlando: 20097 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d86eac6f64215d0f40068dd73281c9a2 = L.marker(
+                [48.8566, 2.3522],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_7cb55d1a23ff96f589e97525f6bdd2be = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2f1e1d8438d5251ce68d7b7e4eab8403 = $(`<div id="html_2f1e1d8438d5251ce68d7b7e4eab8403" style="width: 100.0%; height: 100.0%;">Paryż<br>Liczba lotów: 19710</div>`)[0];
+                popup_7cb55d1a23ff96f589e97525f6bdd2be.setContent(html_2f1e1d8438d5251ce68d7b7e4eab8403);
+            
+        
+
+        marker_d86eac6f64215d0f40068dd73281c9a2.bindPopup(popup_7cb55d1a23ff96f589e97525f6bdd2be)
+        ;
+
+        
+    
+    
+            marker_d86eac6f64215d0f40068dd73281c9a2.bindTooltip(
+                `<div>
+                     Paryż: 19710 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c976d5b14188477cdd23428b1204b7fe = L.marker(
+                [26.1224, -80.1373],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_91e9bb3db3a8c4f8ef42e97aec1a1118 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3e662823d5c13ac495ded1319a3238ba = $(`<div id="html_3e662823d5c13ac495ded1319a3238ba" style="width: 100.0%; height: 100.0%;">Fort Lauderdale<br>Liczba lotów: 18133</div>`)[0];
+                popup_91e9bb3db3a8c4f8ef42e97aec1a1118.setContent(html_3e662823d5c13ac495ded1319a3238ba);
+            
+        
+
+        marker_c976d5b14188477cdd23428b1204b7fe.bindPopup(popup_91e9bb3db3a8c4f8ef42e97aec1a1118)
+        ;
+
+        
+    
+    
+            marker_c976d5b14188477cdd23428b1204b7fe.bindTooltip(
+                `<div>
+                     Fort Lauderdale: 18133 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_477a9742f9cf008b27bd23137d857511 = L.marker(
+                [40.4168, -3.7038],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_b408583b31897032ce8148efe2ac0a78 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c53617e09d15f2b27bdd70ecc3da2fe1 = $(`<div id="html_c53617e09d15f2b27bdd70ecc3da2fe1" style="width: 100.0%; height: 100.0%;">Madryt<br>Liczba lotów: 15047</div>`)[0];
+                popup_b408583b31897032ce8148efe2ac0a78.setContent(html_c53617e09d15f2b27bdd70ecc3da2fe1);
+            
+        
+
+        marker_477a9742f9cf008b27bd23137d857511.bindPopup(popup_b408583b31897032ce8148efe2ac0a78)
+        ;
+
+        
+    
+    
+            marker_477a9742f9cf008b27bd23137d857511.bindTooltip(
+                `<div>
+                     Madryt: 15047 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7d91c5be8a9f4004b5d25377082e3be9 = L.marker(
+                [40.7128, -74.006],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_a31a581d9cfa301c0728f6cd0051d632 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_1cc8d3dc5fbbcfb23a97d69c01b350a5 = $(`<div id="html_1cc8d3dc5fbbcfb23a97d69c01b350a5" style="width: 100.0%; height: 100.0%;">Nowy Jork<br>Liczba lotów: 14824</div>`)[0];
+                popup_a31a581d9cfa301c0728f6cd0051d632.setContent(html_1cc8d3dc5fbbcfb23a97d69c01b350a5);
+            
+        
+
+        marker_7d91c5be8a9f4004b5d25377082e3be9.bindPopup(popup_a31a581d9cfa301c0728f6cd0051d632)
+        ;
+
+        
+    
+    
+            marker_7d91c5be8a9f4004b5d25377082e3be9.bindTooltip(
+                `<div>
+                     Nowy Jork: 14824 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_29a05af2b56bd225d5cb854bc23d4d2d = L.marker(
+                [45.4642, 9.19],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_ce3358f355dd9d6767700b3138540b6c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a3680fb7a0667b9d104e55ddf9b36b41 = $(`<div id="html_a3680fb7a0667b9d104e55ddf9b36b41" style="width: 100.0%; height: 100.0%;">Mediolan<br>Liczba lotów: 14236</div>`)[0];
+                popup_ce3358f355dd9d6767700b3138540b6c.setContent(html_a3680fb7a0667b9d104e55ddf9b36b41);
+            
+        
+
+        marker_29a05af2b56bd225d5cb854bc23d4d2d.bindPopup(popup_ce3358f355dd9d6767700b3138540b6c)
+        ;
+
+        
+    
+    
+            marker_29a05af2b56bd225d5cb854bc23d4d2d.bindTooltip(
+                `<div>
+                     Mediolan: 14236 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_86a74aced874afd4e42fc7ffcf4e2972 = L.marker(
+                [50.1109, 8.6821],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_b82e5b0cf377dbee1e04f84f24c3b62c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_bae7cd927347ff880777de7dd031a34e = $(`<div id="html_bae7cd927347ff880777de7dd031a34e" style="width: 100.0%; height: 100.0%;">Frankfurt<br>Liczba lotów: 12058</div>`)[0];
+                popup_b82e5b0cf377dbee1e04f84f24c3b62c.setContent(html_bae7cd927347ff880777de7dd031a34e);
+            
+        
+
+        marker_86a74aced874afd4e42fc7ffcf4e2972.bindPopup(popup_b82e5b0cf377dbee1e04f84f24c3b62c)
+        ;
+
+        
+    
+    
+            marker_86a74aced874afd4e42fc7ffcf4e2972.bindTooltip(
+                `<div>
+                     Frankfurt: 12058 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f5b0b2582debf500d548e8d86ec4f558 = L.marker(
+                [4.711, -74.0721],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_cf970f8b646a50898c2bf252158f8817 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_394cf3fd498138735d9fa58f44b39a6e = $(`<div id="html_394cf3fd498138735d9fa58f44b39a6e" style="width: 100.0%; height: 100.0%;">Bogotá<br>Liczba lotów: 11939</div>`)[0];
+                popup_cf970f8b646a50898c2bf252158f8817.setContent(html_394cf3fd498138735d9fa58f44b39a6e);
+            
+        
+
+        marker_f5b0b2582debf500d548e8d86ec4f558.bindPopup(popup_cf970f8b646a50898c2bf252158f8817)
+        ;
+
+        
+    
+    
+            marker_f5b0b2582debf500d548e8d86ec4f558.bindTooltip(
+                `<div>
+                     Bogotá: 11939 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6eca17dac54249be41928022f229265f = L.marker(
+                [19.4326, -99.1332],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_fb4c095bf4a2571b56b11e87c0b7d955 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_930ea082038763b1096f4e25a85b13ae = $(`<div id="html_930ea082038763b1096f4e25a85b13ae" style="width: 100.0%; height: 100.0%;">Meksyk (CDMX)<br>Liczba lotów: 10231</div>`)[0];
+                popup_fb4c095bf4a2571b56b11e87c0b7d955.setContent(html_930ea082038763b1096f4e25a85b13ae);
+            
+        
+
+        marker_6eca17dac54249be41928022f229265f.bindPopup(popup_fb4c095bf4a2571b56b11e87c0b7d955)
+        ;
+
+        
+    
+    
+            marker_6eca17dac54249be41928022f229265f.bindTooltip(
+                `<div>
+                     Meksyk (CDMX): 10231 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4c9b38b2d11bcc1e8680af31b5e512c9 = L.marker(
+                [41.9028, 12.4964],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_5a49a7cecb15b7092b5f9aa43a2cd395 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_6d6169a95dc1fa62e4fbf033814db9e7 = $(`<div id="html_6d6169a95dc1fa62e4fbf033814db9e7" style="width: 100.0%; height: 100.0%;">Rzym<br>Liczba lotów: 9215</div>`)[0];
+                popup_5a49a7cecb15b7092b5f9aa43a2cd395.setContent(html_6d6169a95dc1fa62e4fbf033814db9e7);
+            
+        
+
+        marker_4c9b38b2d11bcc1e8680af31b5e512c9.bindPopup(popup_5a49a7cecb15b7092b5f9aa43a2cd395)
+        ;
+
+        
+    
+    
+            marker_4c9b38b2d11bcc1e8680af31b5e512c9.bindTooltip(
+                `<div>
+                     Rzym: 9215 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_54905cf36d996bb60c0a7bba86a701f6 = L.marker(
+                [-12.0464, -77.0428],
+                {
+}
+            ).addTo(map_85c72784b40dc418d77a24575ee1d56f);
+        
+    
+        var popup_f5b6956a2f2be97471ba00ea63bfa60e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_6c7ea4de389a164803c57c0a1e1cfc9e = $(`<div id="html_6c7ea4de389a164803c57c0a1e1cfc9e" style="width: 100.0%; height: 100.0%;">Lima<br>Liczba lotów: 8668</div>`)[0];
+                popup_f5b6956a2f2be97471ba00ea63bfa60e.setContent(html_6c7ea4de389a164803c57c0a1e1cfc9e);
+            
+        
+
+        marker_54905cf36d996bb60c0a7bba86a701f6.bindPopup(popup_f5b6956a2f2be97471ba00ea63bfa60e)
+        ;
+
+        
+    
+    
+            marker_54905cf36d996bb60c0a7bba86a701f6.bindTooltip(
+                `<div>
+                     Lima: 8668 lotów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
