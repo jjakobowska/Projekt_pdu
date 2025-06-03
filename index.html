@@ -385,6 +385,49 @@
   "sticky": true,
 }
             );
-        
+        <!-- 1. Ładowanie wtyczki AnimatedMarker -->
+<script src="https://rawcdn.githack.com/openplans/Leaflet.AnimatedMarker/master/src/AnimatedMarker.js"></script>
+
+<script>
+  // 2. Pozycja Brazylii (São Paulo)
+  const brazilCoords = [-23.5505, -46.6333];
+
+  // 3. Ikonka samolotu
+  const planeIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
+  });
+
+  // 4. Funkcja: dodaje animowany lot z Brazylii do punktu docelowego
+  function flyFromBrazilTo(destLatLng) {
+    // Linia lotu
+    const pathLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map_02529457981b6cfffe87d946c69264a0);
+
+    // Animowany marker
+    const animatedMarker = L.animatedMarker(pathLine.getLatLngs(), {
+      icon: planeIcon,
+      autoStart: true,
+      distance: 3000,
+      interval: 100,
+      onEnd: function() {
+        map_02529457981b6cfffe87d946c69264a0.removeLayer(pathLine);
+        map_02529457981b6cfffe87d946c69264a0.removeLayer(animatedMarker);
+      }
+    });
+
+    map_02529457981b6cfffe87d946c69264a0.addLayer(animatedMarker);
+  }
+
+  // 5. Rejestracja eventu na każdy marker (automatycznie!)
+  map_02529457981b6cfffe87d946c69264a0.eachLayer(layer => {
+    if (layer instanceof L.Marker && layer.getLatLng().lat !== brazilCoords[0]) {
+      layer.on('mouseover', () => {
+        flyFromBrazilTo(layer.getLatLng());
+      });
+    }
+  });
+</script>
+
 </script>
 </html>
