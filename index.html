@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -13,421 +12,94 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_02529457981b6cfffe87d946c69264a0 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
-
-            <style>html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            </style>
-
-            <style>#map {
-                position:absolute;
-                top:0;
-                bottom:0;
-                right:0;
-                left:0;
-                }
-            </style>
-
-            <script>
-                L_NO_TOUCH = false;
-                L_DISABLE_3D = false;
-            </script>
-
-        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map_02529457981b6cfffe87d946c69264a0 {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+        .leaflet-container { font-size: 1rem; }
+    </style>
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_02529457981b6cfffe87d946c69264a0" ></div>
-        
+    <div class="folium-map" id="map_02529457981b6cfffe87d946c69264a0"></div>
 </body>
-<script>
-    
-    
-            var map_02529457981b6cfffe87d946c69264a0 = L.map(
-                "map_02529457981b6cfffe87d946c69264a0",
-                {
-                    center: [10.0, -30.0],
-                    crs: L.CRS.EPSG3857,
-                    ...{
-  "zoom": 2,
-  "zoomControl": true,
-  "preferCanvas": false,
-}
 
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_ede06e9c82c04484f379175bf7a42499 = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {
-  "minZoom": 0,
-  "maxZoom": 19,
-  "maxNativeZoom": 19,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
-  "subdomains": "abc",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 1,
-}
-
-            );
-        
-    
-            tile_layer_ede06e9c82c04484f379175bf7a42499.addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            var marker_cbb0372526c0c8d72bd00441709331b5 = L.marker(
-                [-34.6037, -58.3816],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_cbb0372526c0c8d72bd00441709331b5.bindTooltip(
-                `<div>
-                     Buenos Aires<br>Liczba lotów: 72539
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_816ac9071bd10af248f28bbac37412f1 = L.marker(
-                [-33.4489, -70.6693],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_816ac9071bd10af248f28bbac37412f1.bindTooltip(
-                `<div>
-                     Santiago (Chile)<br>Liczba lotów: 52787
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_63fe6951144738cc40b162e4dc2544bc = L.marker(
-                [38.7169, -9.1399],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_63fe6951144738cc40b162e4dc2544bc.bindTooltip(
-                `<div>
-                     Lizbona<br>Liczba lotów: 40243
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_d3313ebcbef600583cb31a27122ee8cc = L.marker(
-                [25.7617, -80.1918],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_d3313ebcbef600583cb31a27122ee8cc.bindTooltip(
-                `<div>
-                     Miami<br>Liczba lotów: 29849
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_a73ad8258a1ea0a157a8577a80ac793a = L.marker(
-                [-34.9011, -56.1645],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_a73ad8258a1ea0a157a8577a80ac793a.bindTooltip(
-                `<div>
-                     Montevideo<br>Liczba lotów: 21553
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_bf136228b62351a877e3357e64791235 = L.marker(
-                [51.5074, -0.1278],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_bf136228b62351a877e3357e64791235.bindTooltip(
-                `<div>
-                     Londyn<br>Liczba lotów: 21300
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_f24723e89dccd409bf0d2618bca61967 = L.marker(
-                [28.5383, -81.3792],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_f24723e89dccd409bf0d2618bca61967.bindTooltip(
-                `<div>
-                     Orlando<br>Liczba lotów: 20097
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_1c93f60736733c4386eb869f0d5de8ba = L.marker(
-                [48.8566, 2.3522],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_1c93f60736733c4386eb869f0d5de8ba.bindTooltip(
-                `<div>
-                     Paryż<br>Liczba lotów: 19710
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_ef6d386a25328c1266745c68a774a919 = L.marker(
-                [26.1224, -80.1373],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_ef6d386a25328c1266745c68a774a919.bindTooltip(
-                `<div>
-                     Fort Lauderdale<br>Liczba lotów: 18133
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_d48c9e376c5c7ed29ce4b6fe6d361335 = L.marker(
-                [40.4168, -3.7038],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_d48c9e376c5c7ed29ce4b6fe6d361335.bindTooltip(
-                `<div>
-                     Madryt<br>Liczba lotów: 15047
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_e163b7855c5f27f533e66388c7c9875e = L.marker(
-                [40.7128, -74.006],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_e163b7855c5f27f533e66388c7c9875e.bindTooltip(
-                `<div>
-                     Nowy Jork<br>Liczba lotów: 14824
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_c53878f8b8db36f5242ba061b1deabbe = L.marker(
-                [45.4642, 9.19],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_c53878f8b8db36f5242ba061b1deabbe.bindTooltip(
-                `<div>
-                     Mediolan<br>Liczba lotów: 14236
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_a11f8a481f97be56c8607093852c8dd9 = L.marker(
-                [50.1109, 8.6821],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_a11f8a481f97be56c8607093852c8dd9.bindTooltip(
-                `<div>
-                     Frankfurt<br>Liczba lotów: 12058
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_8b1e178f02de8698161e412735a07554 = L.marker(
-                [4.711, -74.0721],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_8b1e178f02de8698161e412735a07554.bindTooltip(
-                `<div>
-                     Bogotá<br>Liczba lotów: 11939
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_a3f04630b78fda110619ff11d34ad69c = L.marker(
-                [19.4326, -99.1332],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_a3f04630b78fda110619ff11d34ad69c.bindTooltip(
-                `<div>
-                     Meksyk (CDMX)<br>Liczba lotów: 10231
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_d1ab672c3e8a008a63930ac417cacdbd = L.marker(
-                [41.9028, 12.4964],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_d1ab672c3e8a008a63930ac417cacdbd.bindTooltip(
-                `<div>
-                     Rzym<br>Liczba lotów: 9215
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-            var marker_a43acceb39a16c3bb31ea3c6ee0d1bbf = L.marker(
-                [-12.0464, -77.0428],
-                {
-}
-            ).addTo(map_02529457981b6cfffe87d946c69264a0);
-        
-    
-            marker_a43acceb39a16c3bb31ea3c6ee0d1bbf.bindTooltip(
-                `<div>
-                     Lima<br>Liczba lotów: 8668
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        <!-- 1. Ładowanie wtyczki AnimatedMarker -->
 <script src="https://rawcdn.githack.com/openplans/Leaflet.AnimatedMarker/master/src/AnimatedMarker.js"></script>
-
 <script>
-  // 2. Pozycja Brazylii (São Paulo)
-  const brazilCoords = [-23.5505, -46.6333];
-
-  // 3. Ikonka samolotu
-  const planeIcon = L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-    iconSize: [32, 32],
-    iconAnchor: [16, 16]
-  });
-
-  // 4. Funkcja: dodaje animowany lot z Brazylii do punktu docelowego
-  function flyFromBrazilTo(destLatLng) {
-    // Linia lotu
-    const pathLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map_02529457981b6cfffe87d946c69264a0);
-
-    // Animowany marker
-    const animatedMarker = L.animatedMarker(pathLine.getLatLngs(), {
-      icon: planeIcon,
-      autoStart: true,
-      distance: 3000,
-      interval: 100,
-      onEnd: function() {
-        map_02529457981b6cfffe87d946c69264a0.removeLayer(pathLine);
-        map_02529457981b6cfffe87d946c69264a0.removeLayer(animatedMarker);
-      }
+    var map_02529457981b6cfffe87d946c69264a0 = L.map("map_02529457981b6cfffe87d946c69264a0", {
+        center: [10.0, -30.0],
+        zoom: 2,
+        zoomControl: true,
+        preferCanvas: false,
     });
 
-    map_02529457981b6cfffe87d946c69264a0.addLayer(animatedMarker);
-  }
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+    }).addTo(map_02529457981b6cfffe87d946c69264a0);
 
-  // 5. Rejestracja eventu na każdy marker (automatycznie!)
-  map_02529457981b6cfffe87d946c69264a0.eachLayer(layer => {
-    if (layer instanceof L.Marker && layer.getLatLng().lat !== brazilCoords[0]) {
-      layer.on('mouseover', () => {
-        flyFromBrazilTo(layer.getLatLng());
-      });
+    // === Marker coordinates with city names and flight counts ===
+    const markers = [
+        { name: "Buenos Aires", coords: [-34.6037, -58.3816], flights: 72539 },
+        { name: "Santiago (Chile)", coords: [-33.4489, -70.6693], flights: 52787 },
+        { name: "Lizbona", coords: [38.7169, -9.1399], flights: 40243 },
+        { name: "Miami", coords: [25.7617, -80.1918], flights: 29849 },
+        { name: "Montevideo", coords: [-34.9011, -56.1645], flights: 21553 },
+        { name: "Londyn", coords: [51.5074, -0.1278], flights: 21300 },
+        { name: "Orlando", coords: [28.5383, -81.3792], flights: 20097 },
+        { name: "Paryż", coords: [48.8566, 2.3522], flights: 19710 },
+        { name: "Fort Lauderdale", coords: [26.1224, -80.1373], flights: 18133 },
+        { name: "Madryt", coords: [40.4168, -3.7038], flights: 15047 },
+        { name: "Nowy Jork", coords: [40.7128, -74.0060], flights: 14824 },
+        { name: "Mediolan", coords: [45.4642, 9.1900], flights: 14236 },
+        { name: "Frankfurt", coords: [50.1109, 8.6821], flights: 12058 },
+        { name: "Bogotá", coords: [4.7110, -74.0721], flights: 11939 },
+        { name: "Meksyk (CDMX)", coords: [19.4326, -99.1332], flights: 10231 },
+        { name: "Rzym", coords: [41.9028, 12.4964], flights: 9215 },
+        { name: "Lima", coords: [-12.0464, -77.0428], flights: 8668 },
+    ];
+
+    const brazilCoords = [-23.5505, -46.6333];
+
+    const planeIcon = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+    });
+
+    function flyFromBrazilTo(destLatLng) {
+        const pathLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map_02529457981b6cfffe87d946c69264a0);
+        const animatedMarker = L.animatedMarker(pathLine.getLatLngs(), {
+            icon: planeIcon,
+            autoStart: true,
+            distance: 3000,
+            interval: 100,
+            onEnd: function () {
+                map_02529457981b6cfffe87d946c69264a0.removeLayer(pathLine);
+                map_02529457981b6cfffe87d946c69264a0.removeLayer(animatedMarker);
+            }
+        });
+        map_02529457981b6cfffe87d946c69264a0.addLayer(animatedMarker);
     }
-  });
-</script>
 
+    // Dodaj markery i eventy najechania myszą
+    markers.forEach(city => {
+        const marker = L.marker(city.coords).addTo(map_02529457981b6cfffe87d946c69264a0);
+        marker.bindTooltip(`<div>${city.name}<br>Liczba lotów: ${city.flights}</div>`, { sticky: true });
+        marker.on('mouseover', () => flyFromBrazilTo(city.coords));
+    });
 </script>
 </html>
