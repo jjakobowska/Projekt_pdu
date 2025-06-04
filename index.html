@@ -19,6 +19,10 @@
             border-radius: 4px;
             box-shadow: 0 0 3px rgba(0,0,0,0.4);
         }
+        .rotating-icon {
+            transition: transform 0.1s linear;
+            transform-origin: center;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +86,8 @@
         activeLine = L.polyline([start, end], { color: 'gray', dashArray: '5' }).addTo(map);
         planeMarker = L.marker(start, { icon: planeIcon }).addTo(map);
 
+        const el = planeMarker.getElement();
+        if (el) el.classList.add('rotating-icon');
         // Oblicz odległość w kilometrach
         const from = L.latLng(start);
         const to = L.latLng(end);
@@ -110,6 +116,15 @@
             const newPos = [lat, lng];
             planeMarker.setLatLng(newPos);
             distanceTooltip.setLatLng(newPos);
+
+             // Obrót samolotu
+            const dx = end[1] - start[1];
+            const dy = end[0] - start[0];
+            const angleRad = Math.atan2(dy, dx);
+            const angleDeg = angleRad * (180 / Math.PI);
+            const el = planeMarker.getElement();
+            if (el) el.style.transform = `rotate(${angleDeg}deg)`;
+
             t += speed;
 
             animationFrame = requestAnimationFrame(animate);
