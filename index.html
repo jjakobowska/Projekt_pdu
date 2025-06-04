@@ -47,7 +47,7 @@
 
     const planeIcon = L.icon({
         iconUrl: 'pngtree-golden-color-3d-airplane-icon-design-png-image_16239586.png', // lokalny plik
-        iconSize: [32, 32],
+        iconSize: [40, 40],
         iconAnchor: [16, 16]
     });
 
@@ -69,27 +69,43 @@
         if (activePlane) map.removeLayer(activePlane);
 
         activeLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map);
+        function animatePlane(path) {
+        let i = 0;
+        const speed = 0.005; // im mniejsza wartość, tym szybciej
 
-        activePlane = L.animatedMarker(activeLine.getLatLngs(), {
-            icon: planeIcon,
-            autoStart: true,
-            distance: 100,   // szybszy ruch
-            interval: 3,
-            onEnd: function () {
-                map.removeLayer(activeLine);
+        function move() {
+            if (i >= 1.0) {
                 map.removeLayer(activePlane);
-                activeLine = null;
                 activePlane = null;
+                cancelAnimationFrame(animationFrame);
+                return;
             }
-        });
 
-        map.addLayer(activePlane);
+            const lat = brazilCoords[0] + (path[0] - brazilCoords[0]) * i;
+            const lng = brazilCoords[1] + (path[1] - brazilCoords[1]) * i;
+
+            activePlane.setLatLng([lat, lng]);
+            i += speed;
+            animationFrame = requestAnimationFrame(move);
+        }
+        move();
     }
+        
+      
 
     markers.forEach(city => {
         const marker = L.marker(city.coords).addTo(map);
         marker.bindTooltip(`<div>${city.name}<br>Liczba lotów: ${city.flights}</div>`, { sticky: true });
-        marker.on('mouseover', () => flyFromBrazilTo(city.coords));
+
+        marker.on('mouseover', () => {
+            if (activePlane) {
+                map.removeLayer(activePlane);
+                cancelAnimationFrame(animationFrame);
+            }
+
+            activePlane = L.marker(brazilCoords, { icon: planeIcon }).addTo(map);
+            animatePlane(city.coords);
+        });
     });
 </script>
 </body>
