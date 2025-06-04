@@ -71,7 +71,7 @@
         activeLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map);
         function animatePlane(path) {
         let i = 0;
-        const speed = 0.005; // im mniejsza wartość, tym szybciej
+        const speed = 0.0001; // im mniejsza wartość, tym szybciej
 
         function move() {
             if (i >= 1.0) {
