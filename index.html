@@ -1,58 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <title>Mapa lotów</title>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <script src="AnimatedMarker.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
-        html, body {
-            width: 100%;
+        html, body, #map {
             height: 100%;
             margin: 0;
             padding: 0;
         }
-        #map_02529457981b6cfffe87d946c69264a0 {
-            position: relative;
-            width: 100.0%;
-            height: 100.0%;
-            left: 0.0%;
-            top: 0.0%;
-        }
-        .leaflet-container { font-size: 1rem; }
     </style>
-    <script>
-        L_NO_TOUCH = false;
-        L_DISABLE_3D = false;
-    </script>
 </head>
 <body>
-    <div class="folium-map" id="map_02529457981b6cfffe87d946c69264a0"></div>
-</body>
-
-<script src="AnimatedMarker.js"></script>
-
+<div id="map"></div>
 <script>
-    var map_02529457981b6cfffe87d946c69264a0 = L.map("map_02529457981b6cfffe87d946c69264a0", {
-        center: [10.0, -30.0],
-        zoom: 2,
-        zoomControl: true,
-        preferCanvas: false,
-    });
+    const map = L.map('map').setView([10.0, -30.0], 2);
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
-    }).addTo(map_02529457981b6cfffe87d946c69264a0);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-    // === Marker coordinates with city names and flight counts ===
     const markers = [
         { name: "Buenos Aires", coords: [-34.6037, -58.3816], flights: 72539 },
         { name: "Santiago (Chile)", coords: [-33.4489, -70.6693], flights: 52787 },
@@ -75,34 +45,52 @@
 
     const brazilCoords = [-23.5505, -46.6333];
 
-     const planeIcon = L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+    const planeIcon = L.icon({
+        iconUrl: 'pngtree-plane-icon-isolated-png-image_1727247.png', // lokalny plik
         iconSize: [32, 32],
         iconAnchor: [16, 16]
     });
- 
 
+    // Stały znacznik Brazylii (czerwony)
+    L.marker(brazilCoords, { icon: L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl: 'https://unpkg.com/leaflet@1.6/dist/images/marker-shadow.png',
+        shadowSize: [41, 41]
+    }) }).addTo(map).bindTooltip("Brazylia", {sticky: true});
+
+    let activeLine = null;
+    let activePlane = null;
 
     function flyFromBrazilTo(destLatLng) {
-        const pathLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map_02529457981b6cfffe87d946c69264a0);
-        const animatedMarker = L.animatedMarker(pathLine.getLatLngs(), {
+        if (activeLine) map.removeLayer(activeLine);
+        if (activePlane) map.removeLayer(activePlane);
+
+        activeLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map);
+
+        activePlane = L.animatedMarker(activeLine.getLatLngs(), {
             icon: planeIcon,
             autoStart: true,
-            distance: 3000,
-            interval: 100,
+            distance: 1500,   // szybszy ruch
+            interval: 30,
             onEnd: function () {
-                map.removeLayer(pathLine);
-                map.removeLayer(animatedMarker);
+                map.removeLayer(activeLine);
+                map.removeLayer(activePlane);
+                activeLine = null;
+                activePlane = null;
             }
         });
-        map_02529457981b6cfffe87d946c69264a0.addLayer(animatedMarker);
+
+        map.addLayer(activePlane);
     }
 
-    // Dodaj markery i eventy najechania myszą
     markers.forEach(city => {
-        const marker = L.marker(city.coords).addTo(map_02529457981b6cfffe87d946c69264a0);
+        const marker = L.marker(city.coords).addTo(map);
         marker.bindTooltip(`<div>${city.name}<br>Liczba lotów: ${city.flights}</div>`, { sticky: true });
         marker.on('mouseover', () => flyFromBrazilTo(city.coords));
     });
 </script>
+</body>
 </html>
