@@ -11,6 +11,14 @@
             margin: 0;
             padding: 0;
         }
+        .distance-tooltip {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            box-shadow: 0 0 3px rgba(0,0,0,0.4);
+        }
     </style>
 </head>
 <body>
@@ -42,7 +50,7 @@
         { name: "Lima", coords: [-12.0464, -77.0428], flights: 8668 },
     ];
 
-    const brazilCoords = [-23.5505, -46.6333];
+    const brazilCoords = [-15.793889, -47.882778]; 
 
     const planeIcon = L.icon({
         iconUrl: 'pngtree-golden-color-3d-airplane-icon-design-png-image_16239586.png',
@@ -62,9 +70,10 @@
 
     let activeLine = null;
     let planeMarker = null;
+    let distanceTooltip = null;
     let animationFrame = null;
 
-    function animateFlight(start, end, speed = 0.02) {
+    function animateFlight(start, end, speed = 0.01) {
         if (activeLine) map.removeLayer(activeLine);
         if (planeMarker) map.removeLayer(planeMarker);
         if (animationFrame) cancelAnimationFrame(animationFrame);
@@ -72,18 +81,34 @@
         activeLine = L.polyline([start, end], { color: 'gray', dashArray: '5' }).addTo(map);
         planeMarker = L.marker(start, { icon: planeIcon }).addTo(map);
 
+        // Oblicz odległość w kilometrach
+        const from = L.latLng(start);
+        const to = L.latLng(end);
+        const distanceKm = (from.distanceTo(to) / 1000).toFixed(0) + " km";
+
+        // Tooltip z dystansem
+        distanceTooltip = L.tooltip({
+            permanent: true,
+            direction: "top",
+            offset: [0, -20],
+            className: "distance-tooltip"
+        }).setContent(distanceKm).setLatLng(start).addTo(map);
+
         let t = 0;
 
         function animate() {
             if (t > 1) {
                 map.removeLayer(activeLine);
                 map.removeLayer(planeMarker);
+                map.removeLayer(distanceTooltip);
                 return;
             }
 
             const lat = start[0] + (end[0] - start[0]) * t;
             const lng = start[1] + (end[1] - start[1]) * t;
-            planeMarker.setLatLng([lat, lng]);
+            const newPos = [lat, lng];
+            planeMarker.setLatLng(newPos);
+            distanceTooltip.setLatLng(newPos);
             t += speed;
 
             animationFrame = requestAnimationFrame(animate);
