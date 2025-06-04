@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Mapa lotów</title>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="AnimatedMarker.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
     <style>
         html, body, #map {
@@ -46,66 +45,57 @@
     const brazilCoords = [-23.5505, -46.6333];
 
     const planeIcon = L.icon({
-        iconUrl: 'pngtree-golden-color-3d-airplane-icon-design-png-image_16239586.png', // lokalny plik
-        iconSize: [40, 40],
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+        iconSize: [32, 32],
         iconAnchor: [16, 16]
     });
 
-    // Stały znacznik Brazylii (czerwony)
-    L.marker(brazilCoords, { icon: L.icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowUrl: 'https://unpkg.com/leaflet@1.6/dist/images/marker-shadow.png',
-        shadowSize: [41, 41]
-    }) }).addTo(map).bindTooltip("Brazylia", {sticky: true});
+    L.marker(brazilCoords, {
+        icon: L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            shadowUrl: 'https://unpkg.com/leaflet@1.6/dist/images/marker-shadow.png',
+            shadowSize: [41, 41]
+        })
+    }).addTo(map).bindTooltip("Brazylia", {sticky: true});
 
     let activeLine = null;
-    let activePlane = null;
+    let planeMarker = null;
+    let animationFrame = null;
 
-    function flyFromBrazilTo(destLatLng) {
+    function animateFlight(start, end, speed = 0.02) {
         if (activeLine) map.removeLayer(activeLine);
-        if (activePlane) map.removeLayer(activePlane);
+        if (planeMarker) map.removeLayer(planeMarker);
+        if (animationFrame) cancelAnimationFrame(animationFrame);
 
-        activeLine = L.polyline([brazilCoords, destLatLng], { color: 'gray', dashArray: '5' }).addTo(map);
-        function animatePlane(path) {
-        let i = 0;
-        const speed = 0.0001; // im mniejsza wartość, tym szybciej
+        activeLine = L.polyline([start, end], { color: 'gray', dashArray: '5' }).addTo(map);
+        planeMarker = L.marker(start, { icon: planeIcon }).addTo(map);
 
-        function move() {
-            if (i >= 1.0) {
-                map.removeLayer(activePlane);
-                activePlane = null;
-                cancelAnimationFrame(animationFrame);
+        let t = 0;
+
+        function animate() {
+            if (t > 1) {
+                map.removeLayer(activeLine);
+                map.removeLayer(planeMarker);
                 return;
             }
 
-            const lat = brazilCoords[0] + (path[0] - brazilCoords[0]) * i;
-            const lng = brazilCoords[1] + (path[1] - brazilCoords[1]) * i;
+            const lat = start[0] + (end[0] - start[0]) * t;
+            const lng = start[1] + (end[1] - start[1]) * t;
+            planeMarker.setLatLng([lat, lng]);
+            t += speed;
 
-            activePlane.setLatLng([lat, lng]);
-            i += speed;
-            animationFrame = requestAnimationFrame(move);
+            animationFrame = requestAnimationFrame(animate);
         }
-        move();
+
+        animate();
     }
-        
-      
 
     markers.forEach(city => {
         const marker = L.marker(city.coords).addTo(map);
-        marker.bindTooltip(`<div>${city.name}<br>Liczba lotów: ${city.flights}</div>`, { sticky: true });
-
-        marker.on('mouseover', () => {
-            if (activePlane) {
-                map.removeLayer(activePlane);
-                cancelAnimationFrame(animationFrame);
-            }
-
-            activePlane = L.marker(brazilCoords, { icon: planeIcon }).addTo(map);
-            animatePlane(city.coords);
-        });
+        marker.bindTooltip(`${city.name}<br>Liczba lotów: ${city.flights}`, { sticky: true });
+        marker.on('mouseover', () => animateFlight(brazilCoords, city.coords));
     });
 </script>
 </body>
