@@ -76,6 +76,7 @@
     function animateFlight(start, end, speed = 0.01) {
         if (activeLine) map.removeLayer(activeLine);
         if (planeMarker) map.removeLayer(planeMarker);
+        if (distanceTooltip) map.removeLayer(distanceTooltip);
         if (animationFrame) cancelAnimationFrame(animationFrame);
 
         activeLine = L.polyline([start, end], { color: 'gray', dashArray: '5' }).addTo(map);
