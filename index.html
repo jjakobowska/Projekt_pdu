@@ -19,10 +19,6 @@
             border-radius: 4px;
             box-shadow: 0 0 3px rgba(0,0,0,0.4);
         }
-        .rotating-icon {
-            transition: transform 0.1s linear;
-            transform-origin: center;
-        }
     </style>
 </head>
 <body>
@@ -58,8 +54,8 @@
 
     const planeIcon = L.icon({
         iconUrl: 'jet-155574.svg',
-        iconSize: [50, 50],
-        iconAnchor: [16, 16]
+        iconSize: [40, 40],
+        iconAnchor: [20, 20]
     });
 
     L.marker(brazilCoords, {
@@ -86,18 +82,14 @@
         activeLine = L.polyline([start, end], { color: 'gray', dashArray: '5' }).addTo(map);
         planeMarker = L.marker(start, { icon: planeIcon }).addTo(map);
 
-        const el = planeMarker.getElement();
-        if (el) el.classList.add('rotating-icon');
-        // Oblicz odległość w kilometrach
         const from = L.latLng(start);
         const to = L.latLng(end);
         const distanceKm = (from.distanceTo(to) / 1000).toFixed(0) + " km";
 
-        // Tooltip z dystansem
         distanceTooltip = L.tooltip({
             permanent: true,
             direction: "top",
-            offset: [0, -20],
+            offset: [0, -25],
             className: "distance-tooltip"
         }).setContent(distanceKm).setLatLng(start).addTo(map);
 
@@ -114,19 +106,11 @@
             const lat = start[0] + (end[0] - start[0]) * t;
             const lng = start[1] + (end[1] - start[1]) * t;
             const newPos = [lat, lng];
+
             planeMarker.setLatLng(newPos);
             distanceTooltip.setLatLng(newPos);
 
-             // Obrót samolotu
-            const dx = end[1] - start[1];
-            const dy = end[0] - start[0];
-            const angleRad = Math.atan2(dy, dx);
-            const angleDeg = angleRad * (180 / Math.PI);
-            const el = planeMarker.getElement();
-            if (el) el.style.transform = `rotate(${angleDeg}deg)`;
-
             t += speed;
-
             animationFrame = requestAnimationFrame(animate);
         }
 
