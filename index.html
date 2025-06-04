@@ -46,7 +46,7 @@
     const brazilCoords = [-23.5505, -46.6333];
 
     const planeIcon = L.icon({
-        iconUrl: 'pngtree-plane-icon-isolated-png-image_1727247.png', // lokalny plik
+        iconUrl: 'pngtree-golden-color-3d-airplane-icon-design-png-image_16239586.png', // lokalny plik
         iconSize: [32, 32],
         iconAnchor: [16, 16]
     });
@@ -73,7 +73,7 @@
         activePlane = L.animatedMarker(activeLine.getLatLngs(), {
             icon: planeIcon,
             autoStart: true,
-            distance: 1500,   // szybszy ruch
+            distance: 100,   // szybszy ruch
             interval: 30,
             onEnd: function () {
                 map.removeLayer(activeLine);
